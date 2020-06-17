@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+  <!-- Module Form ReCaptcha -->
+  <virtualType name="Test\Task\Model\Provider\Failure\RedirectUrl\ContactForm" type="MSP\ReCaptcha\Model\Provider\Failure\RedirectUrl\SimpleUrlProvider">
+    <arguments>
+      <argument name="urlPath" xsi:type="string">contact/index/index</argument>
+    </arguments>
+  </virtualType>
+  <virtualType name="Test\Task\Model\Provider\Failure\ContactFormObserver" type="MSP\ReCaptcha\Model\Provider\Failure\ObserverRedirectFailure">
+    <arguments>
+      <argument name="redirectUrlProvider" xsi:type="object">Test\Task\Model\Provider\Failure\RedirectUrl\ContactForm</argument>
+    </arguments>
+  </virtualType>
+  <virtualType name="Test\Task\Model\Provider\IsCheckRequired\Frontend\ContactForm" type="MSP\ReCaptcha\Model\IsCheckRequired">
+    <arguments>
+      <argument name="enableConfigFlag" xsi:type="string">msp_securitysuite_recaptcha/frontend/contact_us</argument>
+      <argument name="area" xsi:type="string">frontend</argument>
+    </arguments>
+  </virtualType>
+  <virtualType name="Test\Task\Observer\Frontend\ContactFormObserver" type="MSP\ReCaptcha\Observer\ReCaptchaObserver">
+    <arguments>
+      <argument name="isCheckRequired" xsi:type="object">Test\Task\Model\Provider\IsCheckRequired\Frontend\ContactForm</argument>
+      <argument name="failureProvider" xsi:type="object">Test\Task\Model\Provider\Failure\ContactFormObserver</argument>
+    </arguments>
+  </virtualType>
+</config>

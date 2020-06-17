@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <msp_securitysuite_recaptcha>
+      <frontend>
+        <contact_Form>1</contact_Form>
+      </frontend>
+    </msp_securitysuite_recaptcha>
+  </default>
+</config>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+  <event name="controller_action_predispatch_custom_index_index">
+    <observer name="test_task_recaptcha" instance="Test\Task\Observer\Frontend\ContactFormObserver"/>
+  </event>
+</config>
